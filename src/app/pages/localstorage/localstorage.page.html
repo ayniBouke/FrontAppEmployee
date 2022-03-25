@@ -1,0 +1,52 @@
+<ion-header >
+  <ion-toolbar>
+    <button (click)="goProfil()">
+      <ion-thumbnail slot="start"> 
+        <img src="{{imUser}}" title="Go to profil"> 
+      </ion-thumbnail>
+    </button>
+     <br><br><br>
+  <!-- Default Searchbar -->
+  <ion-searchbar [(ngModel)]="myInput" [showCancelButton]="shouldShowCancel" 
+    (ionInput)="onInput($event)" (ionCancel)="onCancel()" >
+  </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="text-end">
+    <button class="btn btn-primary" ion-button type="submit" (click)="NewEmployee()"><ion-icon name="add-sharp"></ion-icon>New Employee</button>
+    
+  </div>
+  <br>
+
+
+  <h1 class="text-center"> <b>List des Employees</b></h1>
+  <br>
+  <!-- <div class="d-flex justify-content-center" *ngIf="!DataLoaded">
+    <div class="spinner-grow" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+  </div> -->
+  
+  <ion-grid *ngFor="let d employees">
+    <ion-row>
+      <ion-col>
+        <b> {{d.FirstName}}  {{d.LastName}}</b> 
+      </ion-col>
+      <ion-col>
+        <ion-button color="success" (click)="UpdateEmployee(d.ID)"> <ion-icon name="reader-outline"></ion-icon></ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button color="danger" (click)="DeleteEmployee(d.ID)"><ion-icon name="trash-outline"></ion-icon></ion-button>
+      </ion-col>
+    </ion-row>
+    <hr>
+  </ion-grid> 
+  <div *ngIf="!employees" class="alert alert-warning" role="alert">
+      Aucun data de title {{myInput}}
+  </div>
+
+  <button class="btn btn-light" ion-button type="submit" (click)="back()">Back</button>
+
+</ion-content>

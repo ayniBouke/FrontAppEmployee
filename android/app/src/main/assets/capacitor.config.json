@@ -1,0 +1,16 @@
+{
+	"appId": "smpnt.com.ecommerce",
+	"appName": "gesionEmployee",
+	"webDir": "www",
+	"bundledWebRuntime": false,
+	"plugins": {
+		"CapacitorFirebaseAuth": {
+			"providers": [
+				"phone"
+			],
+			"languageCode": "en",
+			"nativeAuth": false,
+			"permissions": {}
+		}
+	}
+}

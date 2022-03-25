@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button >
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{btn_txt}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #form="ngForm" (ngSubmit)="register()">
+    <ion-grid>
+      <ion-row color="primary" justify-content-center>
+      </ion-row>
+
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <!-- <div text-align="center">
+          <h1>Register</h1>
+        </div> -->
+        <div padding>
+           <!--FirstName and LastName-->
+          <ion-row>
+            <ion-col>
+              <ion-input name="FirstName" type="text" placeholder="First Name " [(ngModel)]="employee.FirstName" required>
+                <ion-icon slot="start" name="person-outline"></ion-icon>
+              </ion-input>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input name="LastName" type="text" placeholder="Last Name " [(ngModel)]="employee.LastName" required>
+                <ion-icon slot="start" name="person-outline"></ion-icon>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+          <!--CIN-->
+          <ion-row>
+            <ion-input name="CIN" type="text" placeholder="CIN" [(ngModel)]="employee.CIN" required>
+              <ion-icon slot="start" name="id-card-sharp"></ion-icon>
+            </ion-input>
+          </ion-row>
+          <!--Age and Salary-->  
+          <ion-row>
+            <ion-col>
+              <ion-input name="Age" type="number" placeholder="Age" [(ngModel)]="employee.Age" required>
+                <ion-icon slot="start" name="person-add-sharp"></ion-icon>
+              </ion-input>
+            </ion-col>
+            
+            <ion-col>
+              <ion-input name="Salary" type="number" placeholder="Salary " [(ngModel)]="employee.Salary" required>
+                <ion-icon slot="start" name="logo-euro"></ion-icon>
+              </ion-input>
+            </ion-col>
+          </ion-row>
+         
+        </div>
+       
+        <div padding>
+            <ion-button size="large" type="submit" [disabled]="form.invalid" color="success" expand="block">
+            <span *ngIf="!loading">{{btn_txt}}</span>
+            <span *ngIf="loading" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+          <span *ngIf="loading" class="visually-hidden">Loading...</span>
+          </ion-button>
+        </div>
+       
+      </ion-col>
+    </ion-grid>
+  </form>
+</ion-content>
