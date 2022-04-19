@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormControlName } from '@angular/forms';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 import { cfaSignIn, cfaSignInPhone, cfaSignInPhoneOnCodeReceived, cfaSignInPhoneOnCodeSent } from 'capacitor-firebase-auth';
 //import { FirebaseStorage } from 'angularfire2';
@@ -32,7 +33,8 @@ export class TestPage implements OnInit {
   imgUrl = "https://firebasestorage.googleapis.com/v0/b/smpnt-projects.appspot.com/o/Profils%2FFri%20Mar%2011%202022%2010%3A07%3A25%20GMT%2B0100%20(Central%20European%20Standard%20Time)?alt=media&token=787d5dea-405f-400d-b636-6561d6dac11c";
   
   constructor(
-    private mediaService : MediaService
+    private mediaService : MediaService,
+    public localNotifications : LocalNotifications
     //private afStorage: FirebaseStorage 
     ) { }
 
@@ -105,5 +107,44 @@ export class TestPage implements OnInit {
     else{
       return "Videos";
     }
+  }
+
+  //Notification
+  delayed_notification() {
+    let date = new Date();
+    console.log(date) 
+    // Schedule delayed notification
+    this.localNotifications.schedule({
+      text: 'Delayed ILocalNotification',
+      trigger: { at: new Date(date.getTime() + 5000) },
+      led: 'FF0000',
+      sound: null
+    });
+  }
+
+  single_notification() {
+    // Schedule a single notification
+    this.localNotifications.schedule({
+      id: 1,
+      text: 'Single ILocalNotification',
+      sound: 'file://sound.mp3',
+      data: { secret: 'key_data' }
+    });
+  }
+
+  
+  multi_notification() {
+    // Schedule multiple notifications
+    this.localNotifications.schedule([{
+      id: 1,
+      text: 'Multi ILocalNotification 1',
+      sound: 'file://sound.mp3',
+      data: { secret: 'key_data' }
+    }, {
+      id: 2,
+      title: 'Local ILocalNotification Example',
+      text: 'Multi ILocalNotification 2',
+      icon: 'http://example.com/icon.png'
+    }]);
   }
 }

@@ -21,6 +21,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AuthInterceptorService } from './services/oauth-interceptor';
 import { environment } from 'src/environments/environment';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { LocalNotifications } from '@ionic-native/local-notifications/ngx';
 
 export const config = {
   serviceBase: "http://192.168.1.230:1007/",
@@ -39,6 +40,7 @@ export const config = {
   ], 
   providers: [
     //Base64,
+    LocalNotifications,
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptorService, multi: true },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],

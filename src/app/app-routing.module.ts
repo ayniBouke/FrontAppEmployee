@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'employee',
+    redirectTo: 'test',
     pathMatch: 'full'
   },
   {
@@ -57,7 +57,8 @@ const routes: Routes = [
   {
     path: 'insert-employee/:id',
     loadChildren: () => import('./pages/insert-employee/insert-employee.module').then( m => m.InsertEmployeePageModule)
-  },  {
+  },
+  {
     path: 'localstorage',
     loadChildren: () => import('./pages/localstorage/localstorage.module').then( m => m.LocalstoragePageModule)
   },
